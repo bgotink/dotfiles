@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dd if=/dev/urandom bs=16 count=1 2>/dev/null | base64 | sed -e 's/[+=/]//g' | cut -c 1-16
+

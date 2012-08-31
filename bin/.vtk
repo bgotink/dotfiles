@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SERVER=$(basename $0)
+COMMAND=$1
+
+USERNAME=bgotink
+STUDENT=s0203713
+
+getUser() {
+	case $SERVER in
+		arianna|extern|intern.barbara|barbara|caroline|daan|elise|faye|wilma|praesidium)
+			echo $USERNAME
+			;;
+		students)
+			echo $STUDENT
+			;;
+		*)
+			echo 'it'
+			;;
+	esac
+}
+
+case $COMMAND in
+	sftp|ftp)
+		sftp $(getUser)@$SERVER.vtk.be
+		;;
+	ping)
+		ping $SERVER.vtk.be
+		;;
+	ssh|rlogin|slogin|login|*)
+		ssh $(getUser)@$SERVER.vtk.be
+		;;
+esac
