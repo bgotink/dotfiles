@@ -37,7 +37,7 @@ alias l='ls -F'
 alias rm=grm
 
 # Use the GNU ln, because typing 'ln -s ../brol .' is easier than 'ln -s ../brol brol'
-alias ls='gls'
+alias ln='gln'
 
 # make GREP use colors
 alias grep='grep --color=auto'
