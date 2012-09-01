@@ -4,6 +4,12 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 fi
 
+if [ ${BASH_VERSION:0:1} -eq 3 ]; then
+	export BASH_TYPE='OSX'
+else
+	export BASH_TYPE='GNU'
+fi
+
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -29,15 +35,20 @@ export EDITOR=nano
 
 alias shred='srm --medium'
 
-# Use the GNU ls (cf. linux) because it has better color support
-alias ls='gls --color=auto'
-alias l='ls -F'
+if [ $BASH_TYPE = 'GNU' ]; then
+	# Use the GNU ls (cf. linux) because it has better color support
+	alias ls='gls --color=auto'
+	alias l='ls -F'
 
-# Use GNU rm, because that allows using rm /tmp/test -rf, thus ensuring you don't have to type rm -rf /
-alias rm=grm
+	# Use GNU rm, because that allows using rm /tmp/test -rf, thus ensuring you don't have to type rm -rf /
+	alias rm='grm'
 
-# Use the GNU ln, because typing 'ln -s ../brol .' is easier than 'ln -s ../brol brol'
-alias ln='gln'
+	# Use the GNU ln, because typing 'ln -s ../brol .' is easier than 'ln -s ../brol brol'
+	alias ln='gln'
+else
+	alias ls='ls -G'
+	alias l='ls -f'
+fi
 
 # make GREP use colors
 alias grep='grep --color=auto'
