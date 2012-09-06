@@ -1,0 +1,14 @@
+#!/Users/bram/bin/bash
+
+TABS=$1
+shift
+
+TMP=$(mktemp -t expand)
+
+while [ $# -gt 0 ]; do
+    expand $TABS "$1" > $TMP
+    cat $TMP > "$1"
+    shift
+done
+
+rm $TMP
