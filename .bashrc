@@ -45,6 +45,9 @@ if [ $BASH_TYPE = 'GNU' ]; then
 
 	# Use the GNU ln, because typing 'ln -s ../brol .' is easier than 'ln -s ../brol brol'
 	alias ln='gln'
+
+	# User the GNU mktemp, because it doesn't require any arguments
+	alias mktemp='gmktemp'
 else
 	alias ls='ls -G'
 	alias l='ls -f'
@@ -52,3 +55,4 @@ fi
 
 # make GREP use colors
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
