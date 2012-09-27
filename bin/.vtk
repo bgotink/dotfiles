@@ -2,13 +2,15 @@
 
 SERVER=$(basename $0)
 COMMAND=$1
+REMOTE_PORT=${2:-nothere}
+LOCAL_PORT=${3:-$REMOTE_PORT}
 
 USERNAME=bgotink
 STUDENT=s0203713
 
 getUser() {
 	case $SERVER in
-		arianna|extern|intern.barbara|barbara|caroline|daan|elise|faye|wilma|praesidium)
+		arianna|extern|intern.barbara|barbara|caroline|daan|elise|faye|gwen|wilma|praesidium|heather)
 			echo $USERNAME
 			;;
 		students)
@@ -26,6 +28,13 @@ case $COMMAND in
 		;;
 	ping)
 		ping $SERVER.vtk.be
+		;;
+	tunnel)
+		if [ nothere = $REMOTE_PORT ]; then
+			echo "Enter a port number" >&2
+			exit 1
+		fi
+		ssh -N -L$LOCAL_PORT:localhost:$REMOTE_PORT $(getUser)@$SERVER.vtk.be
 		;;
 	ssh|rlogin|slogin|login|*)
 		ssh $(getUser)@$SERVER.vtk.be
