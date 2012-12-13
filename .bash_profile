@@ -3,7 +3,7 @@ if [ -z "$PS1" ]; then
 fi
 
 # fix the path
-PATH=~/bin:/opt/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # bash completion, yay
 if [ -f `brew --prefix`/etc/bash_completion ]; then

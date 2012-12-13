@@ -10,6 +10,8 @@ else
 	export BASH_TYPE='GNU'
 fi
 
+export NODE_PATH=/usr/local/share/npm/lib/node_modules
+
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -48,6 +50,9 @@ if [ $BASH_TYPE = 'GNU' ]; then
 
 	# User the GNU mktemp, because it doesn't require any arguments
 	alias mktemp='gmktemp'
+
+	# sed -i -e doesn't quite work
+	alias sed='gsed'
 else
 	alias ls='ls -G'
 	alias l='ls -f'
@@ -56,3 +61,6 @@ fi
 # make GREP use colors
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+# show a fortune cookie :-)
+[ -x /usr/local/bin/fortune ] && /usr/local/bin/fortune

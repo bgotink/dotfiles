@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ECL_ROOT='/Applications/eclipse'
+
+if [ ! -d "$ECL_ROOT" ]; then
+	echo "Error: $ECL_ROOT doesn't exist." >&2
+	exit 1;
+fi
+
+ARCH="${1:-java}"
+ECL_HOME="$ECL_ROOT/$ARCH"
+
+if [ ! -d "$ECL_HOME" ]; then
+	echo "Error: $ECL_HOME does not exist, architecture $ARCH not installed." >&2
+	exit -1
+fi
+
+"$ECL_HOME"/Eclipse.app/Contents/MacOS/eclipse > /dev/null 2>&1 &
