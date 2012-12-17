@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# allow job management
+set -m
+
+if [[ "$1" =~ -h|--here ]]; then
+    shift
+else
+    # put it in Downloads if not $1 =~ -h|--here
+    cd $HOME/Downloads
+fi
+
+# filename, quite important
+URL="$1"
+if [ $# -lt 2 ]; then
+    FILENAME=$(basename "$URL")
+else
+    FILENAME="$2"
+fi
+
+echo "downloading $URL -> $FILENAME ..." >&2
+wget -O "$FILENAME" "$URL" > /dev/null 2>&1 & wget_pid=$!
+
+echo -n "waiting for wget to start..." >&2
+
+sleep 1
+until [ -f "$FILENAME" ]
+do
+    sleep 1
+done
+
+echo -e "\rOpening $FILENAME                              " >&2
+open "$FILENAME"
+
+trap "kill -9 $wget_pid" SIGINT SIGTERM
+wait $wget_pid
