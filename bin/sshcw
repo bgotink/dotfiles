@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh ${2} s0203713@${1}.cs.kotnet.kuleuven.be

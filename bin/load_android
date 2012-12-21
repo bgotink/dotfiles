@@ -1,0 +1,2 @@
+#!/bin/bash
+export PATH="$HOME/Workspaces/Android/android-sdk-macosx/platform-tools:$PATH"
