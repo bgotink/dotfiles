@@ -15,4 +15,4 @@ if [ ! -d "$ECL_HOME" ]; then
 	exit -1
 fi
 
-"$ECL_HOME"/Eclipse.app/Contents/MacOS/eclipse > /dev/null 2>&1 &
+JAVA_HOME=$(/usr/libexec/java_home -v 1.7) "$ECL_HOME"/Eclipse.app/Contents/MacOS/eclipse > /dev/null 2>&1 &
