@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if which open > /dev/null 2>&1; then
+    open='open'
+elif which xdg-open > /dev/null 2>&1; then
+    open='xdg-open'
+elif which vlc > /dev/null 2>&1; then
+    open='vlc'
+else
+    echo 'Please have `open`, `vlc` or `xdg-open` installed' >&2
+    exit 1
+fi
+
 # allow job management
 set -m
 
@@ -29,8 +40,8 @@ do
     sleep 1
 done
 
-echo -e "\rOpening $FILENAME                              " >&2
-open "$FILENAME"
+echo -e "\rOpening $FILENAME         " >&2
+$open "$FILENAME"
 
 trap "kill -9 $wget_pid" SIGINT SIGTERM
 wait $wget_pid
