@@ -40,7 +40,7 @@ do
     sleep 1
 done
 
-echo -e "\rOpening $FILENAME         " >&2
+echo -e "\rOpening $FILENAME               " >&2
 $open "$FILENAME"
 
 trap "kill -9 $wget_pid" SIGINT SIGTERM
