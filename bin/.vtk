@@ -10,7 +10,7 @@ STUDENT=s0203713
 
 getUser() {
 	case $SERVER in
-		arianna|extern|intern.barbara|barbara|caroline|daan|elise|faye|gwen|wilma|praesidium|heather)
+		arianna|extern|intern.barbara|barbara|caroline|daan|elise|faye|gwen|wilma|praesidium|heather|leonie)
 			echo $USERNAME
 			;;
 		students)
