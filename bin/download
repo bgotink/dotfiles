@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#################################################################################
+#                                  Parse options                                #
+#################################################################################
+
+# change the order of the arguments to $options -- $other_args
+
 if which open > /dev/null 2>&1; then
     open='open'
 elif which xdg-open > /dev/null 2>&1; then
@@ -30,7 +36,7 @@ else
 fi
 
 echo "downloading $URL -> $FILENAME ..." >&2
-wget -O "$FILENAME" "$URL" > /dev/null 2>&1 & wget_pid=$!
+wget --continue -O "$FILENAME" "$URL" > /dev/null 2>&1 & wget_pid=$!
 
 echo -n "waiting for wget to start..." >&2
 

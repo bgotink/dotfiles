@@ -6,3 +6,5 @@
 	insteadOf = github:
 [push]
 	default = matching
+[color]
+	ui = auto

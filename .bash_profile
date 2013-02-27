@@ -3,7 +3,13 @@ if [ -z "$PS1" ]; then
 fi
 
 # fix the path
-PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+
+# fix the manpath
+MANPATH=/usr/local/share/man:/opt/local/share/man:/usr/share/man
+
+# fix the include path
+INCLUDE_PATH=/usr/local/include:/opt/local/include:/usr/include
 
 # bash completion, yay
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -17,3 +23,4 @@ fi
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+
