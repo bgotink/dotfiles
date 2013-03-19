@@ -17,6 +17,12 @@ else
     exit 1
 fi
 
+if which gecho > /dev/null 2>&1; then
+    echo=$(which gecho)
+else
+    echo=$(which echo)
+fi
+
 # allow job management
 set -m
 
@@ -35,10 +41,13 @@ else
     FILENAME="$2"
 fi
 
-echo "downloading $URL -> $FILENAME ..." >&2
+# URLdecode the filename
+FILENAME=$($echo "$FILENAME" | sed -e 's/%\([0-9A-F][0-9A-F]\)/\\\\\x\1/g' | xargs $echo -e)
+
+$echo "downloading $URL -> $FILENAME ..." >&2
 wget --continue -O "$FILENAME" "$URL" > /dev/null 2>&1 & wget_pid=$!
 
-echo -n "waiting for wget to start..." >&2
+$echo -n "waiting for wget to start..." >&2
 
 sleep 1
 until [ -f "$FILENAME" ]
@@ -46,7 +55,7 @@ do
     sleep 1
 done
 
-echo -e "\rOpening $FILENAME               " >&2
+$echo -e "\rOpening $FILENAME               " >&2
 $open "$FILENAME"
 
 trap "kill -9 $wget_pid" SIGINT SIGTERM
