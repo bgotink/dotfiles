@@ -1,0 +1,14 @@
+#!/bin/bash
+
+screen=$(PATH=/usr/local/bin:/opt/local/bin:/usr/bin:/bin which screen)
+
+[ -z "$screen" ] && ( echo "GNU screen not found. Please install screen before using this script." >&2; exit 1; )
+
+if [ -z "$1" ]; then
+    $screen
+elif [ -f "$HOME/.screens/$1" ]; then
+    pid=$(cat "$HOME/.screens/$1");
+    $screen -rd $pid
+else
+    $screen "$1"
+fi
