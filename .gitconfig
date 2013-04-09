@@ -4,7 +4,33 @@
 
 [url "git@github.com:"]
 	insteadOf = github:
+
 [push]
 	default = matching
+
 [color]
-	ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+
+[status]
+    relativePaths = true
+    showUntrackedFiles = no
+
+[alias]
+    # remove a file from index
+    unadd = reset HEAD
+
+    # amend
+    amend = commit --amend
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
