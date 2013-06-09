@@ -1,8 +1,18 @@
+# bash completion, yay
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+if [ -f `brew --prefix`/etc/grc.bashrc ]; then
+    . `brew --prefix`/etc/grc.bashrc
+fi
+
 HISTFILESIZE=1000
 
 if [[ ${EUID} == 0 ]] ; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '  
 else
+    export GIT_PS1_SHOWDIRTYSTATE=1
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\]$(__git_ps1 " (%s) ")\[\033[00m\]\$ '
 fi
 
@@ -47,14 +57,17 @@ if [ $BASH_TYPE = 'GNU' ]; then
 	# Use GNU rm, because that allows using rm /tmp/test -rf, thus ensuring you don't have to type rm -rf /
 	alias rm='grm'
 
-	# Use the GNU ln, because typing 'ln -s ../brol .' is easier than 'ln -s ../brol brol'
-	alias ln='gln'
-
 	# User the GNU mktemp, because it doesn't require any arguments
 	alias mktemp='gmktemp'
 
 	# sed -i -e doesn't quite work
 	alias sed='gsed'
+
+	# chown requires ':', gchown doesn't
+	alias chown='gchown'
+
+	# I'm used to 'cp -varx' to copy directories, which doesn't work with the BSD cp
+	alias cp='gcp'
 else
 	alias ls='ls -G'
 	alias l='ls -f'
