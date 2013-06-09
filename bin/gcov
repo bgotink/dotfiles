@@ -1,8 +1,1 @@
-#!/usr/local/bin/bash
-
-VERSION=4.8
-
-command=$(basename "$0")-$VERSION
-
-$command $*
-
+.gcc
