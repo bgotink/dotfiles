@@ -2,30 +2,52 @@ if [ -z "$PS1" ]; then
    return
 fi
 
-getPath() {
-if [ -d "$1" ]; then
-    if [ -d "$1"/bin ]; then
-        echo -n "$1/bin:"
+PATH=''
+MANPATH=''
+INCLUDE_PATH=''
+
+__addToPath() {
+    if [ -d "$1" ]; then
+        local dir="${1%/}"
+        
+        if [ -d "$dir"/sbin ]; then
+            PATH=":$dir/sbin$PATH";
+        fi
+        if [ -d "$dir"/bin ]; then
+            PATH=":$dir/bin$PATH";
+        fi
+    
+        if [ -d "$dir"/share/man ]; then
+            MANPATH=":$dir/share/man$MANPATH";
+        fi
+    
+        if [ -d "$dir"/include ]; then
+            INCLUDE_PATH=":$dir/include$INCLUDE_PATH";
+        fi
     fi
-    if [ -d "$1"/sbin ]; then
-        echo -n "$1/sbin:"
-    fi
-fi
 }
 
-# fix the path
-PATH=$(getPath $HOME)$(getPath /usr/local/share/npm)$(getPath /usr/local)$(getPath /opt/local)$(getPath /usr)/bin:/sbin
+# fix the paths
+__addToPath /;
+__addToPath /usr;
+__addToPath /opt/local;
+__addToPath /usr/local;
+__addToPath /usr/local/share/npm;
+__addToPath "$HOME";
 
-# fix the manpath
-MANPATH=/usr/local/share/man:/opt/local/share/man:/usr/share/man
+unset __addToPath;
 
-# fix the include path
-INCLUDE_PATH=/usr/local/include:/opt/local/include:/usr/include
+PATH="${PATH:1}";
+MANPATH="${MANPATH:1}";
+INCLUDE_PATH="${INCLUDE_PATH:1}";
 
-if [ -f `brew --prefix`/etc/grc.bashrc ]; then
-    . `brew --prefix`/etc/grc.bashrc
-fi
+export PATH MANPATH INCLUDE_PATH;
+
+HAVE_BREW=$(which brew > /dev/null 2>&1 && echo "1" || echo "0");
+export HAVE_BREW;
 
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+
+unset HAVE_BREW;
