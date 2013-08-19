@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PROC="${1:?Usage: waitfor <program>}"
+THIS=$(basename "$0")
+
+while ps axo command | grep -v "$THIS" | grep -q "[${PROC:0:1}]${PROC:1}"; do
+    sleep 1
+done

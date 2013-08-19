@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PROC="${1:?Usage: isrunning <program>}"
+THIS=$(basename "$0")
+
+ps axo command | grep -v "$THIS" | grep -q "[${PROC:0:1}]${PROC:1}"
+exit $?
