@@ -1,9 +1,14 @@
 [user]
 	name = Bram Gotink
-	email = bram.gotink@vtk.be
+	email = bram@gotink.me
 
 [url "git@github.com:"]
 	insteadOf = github:
+[url "git@gist.github.com:"]
+	insteadOf = gist:
+
+[url "git@github.com:bgotink/"]
+	insteadOf = bgotink:
 
 [push]
 	default = matching
@@ -25,8 +30,12 @@
 
     # amend
     amend = commit --amend
+
+    # co
+    co = checkout
 [diff]
-	tool = diffmerge
+#	tool = diffmerge
+	tool = sourcetree
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
