@@ -1,7 +1,7 @@
 function ls --description "List files"
     if which gls >/dev/null 2>&1
-        gls $argv
+        gls --color=auto $argv
     else
-        command ls $argv
+        command ls --color=auto $argv
     end
 end
