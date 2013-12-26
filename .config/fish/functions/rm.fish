@@ -1,3 +1,7 @@
 function rm
-    which grm >/dev/null ^/dev/null; and command grm $argv; or command rm $argv;
+    if which grm >/dev/null 2>&1
+        grm $argv
+    else
+        command rm $argv
+    end
 end

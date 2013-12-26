@@ -1,3 +1,7 @@
 function mktemp
-    which gmktemp >/dev/null ^/dev/null; and command gmktemp $argv; or command mktemp $argv
+    if which gmktemp >/dev/null 2>&1
+        gmktemp $argv
+    else
+        command mktemp $argv
+    end
 end

@@ -1,3 +1,7 @@
 function cp
-    which cp >/dev/null ^/dev/null; command gcp $argv; command cp $argv
+    if which gcp >/dev/null 2>&1
+        gcp $argv
+    else
+        command cp $argv
+    end
 end

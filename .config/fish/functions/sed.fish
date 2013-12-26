@@ -1,3 +1,7 @@
 function sed
-    which gsed >/dev/null ^/dev/null; and command gsed $argv; or command sed $argv
+    if which gsed > /dev/null 2>&1
+        gsed $argv
+    else
+        command sed $argv
+    end
 end

@@ -1,3 +1,7 @@
 function chown
-    which gchown >/dev/null 2>&1; and command gchown $argv; or command chown $argv
+    if which gchown >/dev/null 2>&1
+        gchown $argv
+    else
+        command chown $argv
+    end
 end
