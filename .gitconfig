@@ -10,6 +10,9 @@
 [url "git@github.com:bgotink/"]
 	insteadOf = bgotink:
 
+[url "git@github.com:LitusProject/"]
+	insteadOf = litus:
+
 [push]
 	default = matching
 
@@ -33,6 +36,9 @@
 
     # co
     co = checkout
+
+    # master
+    master = checkout master
 [diff]
 #	tool = diffmerge
 	tool = sourcetree
