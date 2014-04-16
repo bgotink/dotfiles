@@ -1,4 +1,8 @@
+# set $HOST
+
 set -x HOST (hostname)
+
+# set the different PATH's
 
 set -x PATH '/usr/bin' '/bin'
 eval "function _test; "(which test)" \$argv; end;"
@@ -31,8 +35,17 @@ _add_to_path /usr
 _add_to_path /
 
 functions -e _test
-
 functions -e _add_to_path
+
+# load local configuration files
+
+if test -d ~/.config/fish/local
+    for file in (ls ~/.config/fish/local)
+        source ~/.config/fish/local/$file
+    end
+end
+
+# display fortune if applicable
 
 if status -i
     which fortune >/dev/null ^&1; and fortune;
