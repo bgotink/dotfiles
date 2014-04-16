@@ -1,7 +1,15 @@
 function fish_prompt --description "Write the prompt"
-    set_color green
+    if test (whoami) != 'root'
+        set_color green
+    else
+        if test $HOME = /root
+            set_color yellow
+        else
+            set_color red
+        end
+    end
     echo -n $USER
-    if echo $HOST | grep -v -q -E $USER".*"
+    if echo $HOST | grep -vi -q -E $USER".*"
         # other host (SSH) or other user
         echo -n "@"$HOST
     end
