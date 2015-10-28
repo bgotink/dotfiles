@@ -31,6 +31,7 @@ set -gx LD_LIBRARY_PATH
 _add_to_path $HOME
 _add_to_path /usr/local
 _add_to_path /usr/local/share/npm
+_add_to_path /Library/Ruby
 _add_to_path /usr
 _add_to_path /
 
