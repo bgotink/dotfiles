@@ -1,7 +1,0 @@
-#!/usr/local/bin/bash
-
-VERSION=4.9
-
-command=$(basename "$0")-$VERSION
-
-$command $*
