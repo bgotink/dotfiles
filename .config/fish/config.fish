@@ -14,7 +14,7 @@ function _add_to_path
     if _test $argv[1] = '/'
         set argv[1] ''
     end
-    
+
     _test -d $argv[1]/bin; and set PATH $PATH $argv[1]/bin
     _test -d $argv[1]/sbin; and set PATH $PATH $argv[1]/sbin
 
@@ -38,6 +38,14 @@ _add_to_path /
 functions -e _test
 functions -e _add_to_path
 
+# Load global configuration files
+
+if test -d ~/.config/fish/global
+    for file in (ls ~/.config/fish/global)
+        source ~/.config/fish/global/$file
+    end
+end
+
 # load local configuration files
 
 if test -d ~/.config/fish/local
@@ -45,9 +53,3 @@ if test -d ~/.config/fish/local
         source ~/.config/fish/local/$file
     end
 end
-
-# display fortune if applicable
-
-if status -i
-    which fortune >/dev/null ^&1; and fortune;
-end 

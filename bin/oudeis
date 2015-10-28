@@ -1,0 +1,2 @@
+#!/bin/bash
+(echo "Οὐδείς" | tee -a /dev/fd/2 | pbcopy ) 2>&1
