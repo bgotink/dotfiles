@@ -1,4 +1,4 @@
-#!/Users/bram/bin/bash
+#!/usr/local/bin/bash
 
 TABS=$1
 shift
