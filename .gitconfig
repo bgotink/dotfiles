@@ -13,6 +13,12 @@
 [url "git@github.com:LitusProject/"]
 	insteadOf = litus:
 
+[url "bram@162.243.222.7:/git/"]
+	insteadOf = burgerking:
+
+[url "git@bitbucket.org:"]
+	insteadOf = bitbucket:
+
 [push]
 	default = matching
 
