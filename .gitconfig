@@ -45,9 +45,13 @@
 
     # master
     master = checkout master
+
+    # commit
+    c = commit
 [diff]
 #	tool = diffmerge
 	tool = sourcetree
+	submodule = log
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
