@@ -36,6 +36,7 @@
 [alias]
     # remove a file from index
     unadd = reset HEAD
+    ua = reset HEAD
 
     # amend
     amend = commit --amend
@@ -48,6 +49,27 @@
 
     # commit
     c = commit
+
+    # add
+    a = add
+
+    # push
+    ps = push
+    psh = push
+
+    # pull
+    pl = pull
+    pll = pull
+
+    # diff
+    d = diff
+    df = diff
+
+    # status
+    s = status
+    su = status -u
+    s-u = status -u
+
 [diff]
 	tool = diffmerge
 	submodule = log
