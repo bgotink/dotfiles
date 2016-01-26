@@ -71,6 +71,13 @@
     su = status -u
     s-u = status -u
 
+    # pretty logs
+    # credit to @amateurhuman
+    lol = log --pretty=format:"%C(yellow)%h\\ %C(blue)%ad%C(red)%d\\ %C(reset)%s%C(green)\\ [%an]" --decorate --date=short
+    lls = log --pretty=format:"%C(yellow)%h\\ %C(green)%<(20,trunc)%cn\\ %C(blue)%ad%C(red)%d\\ %C(reset)%s" --date=short --decorate
+    graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
 [diff]
 	tool = diffmerge
 	submodule = log
