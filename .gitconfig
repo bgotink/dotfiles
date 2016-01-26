@@ -64,6 +64,7 @@
     # diff
     d = diff
     df = diff
+    dc = diff --cached
 
     # status
     s = status
