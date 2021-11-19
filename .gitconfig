@@ -1,6 +1,7 @@
 [user]
 	name = Bram Gotink
 	email = bram@gotink.me
+	signingKey = 0xDDD857425AF4D83A
 
 [url "git@github.com:"]
 	insteadOf = github:
@@ -10,17 +11,11 @@
 [url "git@github.com:bgotink/"]
 	insteadOf = bgotink:
 
-[url "git@github.com:LitusProject/"]
-	insteadOf = litus:
-
-[url "bram@162.243.222.7:/git/"]
-	insteadOf = burgerking:
-
 [url "git@bitbucket.org:"]
 	insteadOf = bitbucket:
 
 [push]
-	default = matching
+	default = upstream
 
 [color]
     diff = auto
@@ -49,27 +44,36 @@
 
     # commit
     c = commit
+    cf = commit --fixup
+    cm = commit -m
 
     # add
     a = add
+    an = add -N
+    ap = add -p
 
     # push
     ps = push
-    psh = push
+    pf = push --force-with-lease
 
     # pull
     pl = pull
-    pll = pull
 
     # diff
     d = diff
-    df = diff
     dc = diff --cached
+
+    # reset
+    r = reset
+    rh = reset --hard
+    rs = reset --soft
 
     # status
     s = status
     su = status -u
-    s-u = status -u
+
+    # super duper clean
+    nuke = clean -xdf
 
     # pretty logs
     # credit to @amateurhuman
@@ -79,16 +83,25 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
 [diff]
-	tool = diffmerge
+	tool = vscode
 	submodule = log
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool "vscode"]
+    cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 
 [merge]
-	tool = diffmerge
+	tool = vscode
 [mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
+    cmd = code --wait --diff \"$MERGED\"
 
 [core]
 	excludesfile = /Users/bram/.gitignore_global
+[pull]
+	rebase = true
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[init]
+	defaultBranch = main
+[sequence]
+	editor = interactive-rebase-tool

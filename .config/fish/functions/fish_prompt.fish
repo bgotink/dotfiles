@@ -9,7 +9,7 @@ function fish_prompt --description "Write the prompt"
         end
     end
     echo -n $USER
-    if echo $HOST | grep -vi -q -E $USER".*"
+    if echo $HOST | grep -vi -q -F MacBook-Pro
         # other host (SSH) or other user
         echo -n "@"$HOST
     end
