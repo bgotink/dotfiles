@@ -25,8 +25,13 @@ set -gx INCLUDE_PATH
 set -gx LD_LIBRARY_PATH
 
 _add_to_path $HOME
+_add_to_path $HOME/.yarn
+if test -d $HOME/.cargo
+  _add_to_path $HOME/.cargo
+end
 _add_to_path $N_PREFIX
 _add_to_path /opt/homebrew
+_add_to_path (python3 -m site --user-base)
 _add_to_path /usr/local
 _add_to_path /usr
 _add_to_path /

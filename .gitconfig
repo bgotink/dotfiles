@@ -29,28 +29,25 @@
     showUntrackedFiles = no
 
 [alias]
-    # remove a file from index
-    unadd = reset HEAD
-    ua = reset HEAD
-
-    # amend
-    amend = commit --amend
-
-    # co
+    # Checking out branches
     co = checkout
+    sc = switch -c
 
-    # master
-    master = checkout master
-
-    # commit
+    # Commits
+    amend = commit --amend
     c = commit
     cf = commit --fixup
     cm = commit -m
+    wip = commit -m 'WIP' --no-gpg-sign --no-verify
 
-    # add
+    # Add files
     a = add
     an = add -N
     ap = add -p
+
+    # Unadd files
+    unadd = reset HEAD
+    ua = reset HEAD
 
     # push
     ps = push
@@ -89,6 +86,7 @@
     cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 
 [merge]
+    autostash = true
 	tool = vscode
 [mergetool "diffmerge"]
     cmd = code --wait --diff \"$MERGED\"
@@ -105,3 +103,5 @@
 	defaultBranch = main
 [sequence]
 	editor = interactive-rebase-tool
+[rebase]
+	autostash = true

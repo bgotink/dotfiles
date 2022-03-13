@@ -1,0 +1,58 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+
+# CLI
+
+# Replacements for macOS's builtins
+brew "bash"
+brew "binutils"
+brew "coreutils"
+brew "findutils"
+brew "git"
+brew "gnu-sed"
+brew "grep"
+brew "less"
+brew "nano"
+brew "openssh"
+
+# C/C++
+brew "automake"
+
+# Java
+brew "openjdk"
+
+# JavaScript
+brew "emscripten"
+brew "n"
+
+# Rust
+brew "rustup-init"
+
+# Varia
+brew "cloc" # count lines of code
+brew "cowsay" # what the cow say?
+brew "fish" # replacement shell
+brew "fortune" # bad-mouthed cows, what's not to like?
+brew "gh" # GitHub CLI
+brew "git-interactive-rebase-tool" # used in .gitconfig
+brew "gnupg" # for signing commits & to act as SSH agent
+brew "htop" # process inspector
+brew "jq" # querying and modifying JSON
+brew "pinentry-mac" # for entering pin codes when signing commits
+brew "qemu" # virtualisation
+brew "sponge" # why isn't this installed by default?
+brew "watch" # name says it all
+brew "wget" # because who's got time to learn curl?
+
+# Apps
+
+cask "bartender"
+cask "firefox-nightly"
+cask "google-chrome"
+cask "nordvpn"
+cask "signal"
+cask "steam"
+cask "visual-studio-code"
+cask "vlc"
