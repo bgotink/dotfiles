@@ -1,2 +1,0 @@
-#!/usr/local/bin/bash
-export PATH="$PATH:/usr/texbin"
