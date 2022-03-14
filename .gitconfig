@@ -34,8 +34,10 @@
     sc = switch -c
 
     # Commits
-    amend = commit --amend
     c = commit
+    ca = commit --amend
+    amend = commit --amend
+    cane = commit --amend --no-edit
     cf = commit --fixup
     cm = commit -m
     wip = commit -m 'WIP' --no-gpg-sign --no-verify
