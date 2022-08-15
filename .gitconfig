@@ -31,6 +31,7 @@
 [alias]
     # Checking out branches
     co = checkout
+    sw = switch
     sc = switch -c
 
     # Commits
@@ -69,6 +70,7 @@
 
     # status
     s = status
+    st = status
     su = status -u
 
     # super duper clean
@@ -81,6 +83,8 @@
     graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
+    mkversion = "!f() { git commit -m \"{chore} version v$1\" && git tag -m v$1 v$1; }; f"
+
 [diff]
 	tool = vscode
 	submodule = log
@@ -90,11 +94,12 @@
 [merge]
     autostash = true
 	tool = vscode
-[mergetool "diffmerge"]
-    cmd = code --wait --diff \"$MERGED\"
+[mergetool "vscode"]
+	cmd = code --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
 
 [core]
 	excludesfile = /Users/bram/.gitignore_global
+	editor = nano
 [pull]
 	rebase = true
 [commit]
