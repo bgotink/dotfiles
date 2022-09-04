@@ -100,6 +100,7 @@
 [core]
 	excludesfile = /Users/bram/.gitignore_global
 	editor = nano
+	pager = less -x2
 [pull]
 	rebase = true
 [commit]
