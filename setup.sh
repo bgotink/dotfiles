@@ -65,6 +65,8 @@ umask "$original_umask"
 
 ###
 # Configure macOS
+#
+# See https://macos-defaults.com/ for info on the defaults
 ###
 
 # Configure FISH as shell
@@ -106,6 +108,10 @@ defaults write com.apple.dock orientation left
 defaults write com.apple.dock magnification -boolean false
 # Minimize apps to the app logo
 defaults write com.apple.dock minimize-to-application -boolean true
+# Do not show recent applications
+defaults write com.apple.dock show-recents -bool false
+# Do not re-order spaces based on most recently used
+defaults write com.apple.dock mru-spaces -bool false
 
 # Gestures
 
