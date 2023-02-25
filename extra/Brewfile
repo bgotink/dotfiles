@@ -49,6 +49,7 @@ brew "wget" # because who's got time to learn curl?
 
 # Apps
 
+cask "arc"
 cask "bartender"
 cask "firefox-nightly"
 cask "google-chrome"
