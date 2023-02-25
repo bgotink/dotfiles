@@ -26,7 +26,7 @@ brew "openjdk"
 
 # JavaScript
 brew "emscripten"
-brew "n"
+brew "fnm"
 
 # Rust
 brew "rustup-init"
