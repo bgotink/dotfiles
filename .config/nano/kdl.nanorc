@@ -1,0 +1,29 @@
+## Syntax highlighting for KDL.
+
+syntax kdl "\.kdl$"
+comment "//"
+
+# Octal/decimal and hexadecimal numbers.
+color cyan "\<-?([0-9][0-9_]*(,[0-9_]*)?([eE][+-]?[0-9_]+)?|0x([[:xdigit:]]|_)+)|0b[01_]+\>"
+# Special values.
+color cyan "\<(true|false|null|undefined)\>"
+
+# Strings.
+color brightmagenta start="r#\"" end="\"#"
+color brightmagenta start="r##\"" end="\"##"
+color brightmagenta start="r###\"" end="\"###"
+color brightmagenta start="r####\"" end="\"####"
+color brightmagenta start="r#####\"" end="\"#####"
+color brightmagenta start="r######\"" end="\"######"
+color brightmagenta start="r#######\"" end="\"#######"
+color brightmagenta start="r########\"" end="\"########"
+color brightmagenta start="r#########\"" end="\"#########"
+color brightmagenta start="r##########\"" end="\"##########"
+color brightmagenta ""([^"\]|\\.)*""
+
+# Comments.
+color brightblue "(^|[[:blank:]])//.*"
+color brightblue start="/\*" end="\*/"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
