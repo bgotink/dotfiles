@@ -1,5 +1,5 @@
 function fish_prompt --description "Write the prompt"
-    if test (whoami) != 'root'
+    if test $EUID != 0
         set_color green
     else
         if test $HOME = /root

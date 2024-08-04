@@ -1,7 +1,8 @@
 function git
-    if which -s hub
-        hub $argv
-    else
-        command git $argv
+    if test $argv[1] = "cd"
+        cd (command git rev-parse --show-toplevel)
+        return
     end
+
+    command git $argv
 end

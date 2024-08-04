@@ -1,7 +1,9 @@
 [user]
 	name = Bram Gotink
 	email = bram@gotink.me
-	signingKey = 0xDDD857425AF4D83A
+	signingKey = ~/.ssh/id_ed25519_sk.pub
+	# GPG Key: (remove the gpg.format setting if uncommenting!)
+	# signingKey = 0xDDD857425AF4D83A
 
 [url "git@github.com:"]
 	insteadOf = github:
@@ -86,6 +88,11 @@
 
     mkversion = "!f() { git commit -m \"{chore} version v$1\" && git tag -m v$1 v$1; }; f"
 
+	# stash
+	sp = stash pop
+	sa = stash apply
+	ski = stash --keep-index --include-untracked
+
 [diff]
 	tool = vscode
 	submodule = log
@@ -99,11 +106,15 @@
 	cmd = code --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
 
 [core]
-	excludesfile = /Users/bram/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nano
 	pager = less -x2
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
 [commit]
 	gpgSign = true
 [tag]
@@ -114,3 +125,4 @@
 	editor = interactive-rebase-tool
 [rebase]
 	autostash = true
+	autosquash = true

@@ -154,3 +154,4 @@ alias fgrep='fgrep --color=auto'
 __which fortune && fortune;
 
 unset UNAME __which HAVE_BREW;
+. "$HOME/.cargo/env"

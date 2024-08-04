@@ -51,3 +51,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 unset HAVE_BREW;
+. "$HOME/.cargo/env"
